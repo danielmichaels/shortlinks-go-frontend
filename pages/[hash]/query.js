@@ -1,12 +1,12 @@
 import {getLinkQuery} from "../../lib/axiosHandler";
 import {useRouter} from "next/router";
+import QueryTable from "../../components/QueryTable";
 
 const LinkQuery = () => {
   const Router = useRouter()
-  const { hash } = Router.query
+  const {hash} = Router.query
 
   const {data, isLoading, isError} = getLinkQuery(hash)
-
   if (isLoading) {
     return (
       <div>
@@ -22,8 +22,12 @@ const LinkQuery = () => {
   }
   return (
     <div>
-      query page
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <div
+        className="py-6 flex flex-col justify-center sm:py-12">
+        <div className="relative py-3 min-w-full max-w-xl sm:mx-auto">
+          <QueryTable data={data.data}/>
+        </div>
+      </div>
     </div>
   )
 }
