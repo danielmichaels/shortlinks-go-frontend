@@ -7,7 +7,7 @@ const LinkQuery = () => {
   const {hash} = Router.query
 
   const {data, isLoading, isError} = getLinkQuery(hash)
-  if (isLoading) {
+  if (!data) {
     return (
       <div>
         loading...
@@ -15,11 +15,11 @@ const LinkQuery = () => {
     )
   }
 
-  if (isError) {
-    return (
-      <div>Error retrieving data</div>
-    )
-  }
+  // if (!data) {
+  //   return (
+  //     <div>Error retrieving data</div>
+  //   )
+  // }
   return (
     <div>
       <div

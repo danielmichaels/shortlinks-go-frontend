@@ -6,7 +6,6 @@ const getCurrentYear = () => {
 const navigation = {
   main: [
     {name: 'About', href: '/about'},
-    {name: 'Status Codes', href: '/codes'},
     { name: 'Stats', href: '/stats' },
   ],
   social: [
@@ -62,8 +61,7 @@ export default function Footer() {
           ))}
         </div>
         <p
-          className="mt-8 text-center text-base text-gray-400">&copy; {getCurrentYear()} Check
-          Redirects, All rights reserved.
+          className="mt-8 text-center text-base text-gray-400">&copy; {getCurrentYear()} Shorty Links, All rights reserved.
         </p>
       </div>
     </footer>

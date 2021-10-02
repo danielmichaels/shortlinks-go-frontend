@@ -7,8 +7,11 @@ import {
   useTable
 } from "react-table";
 import {SearchIcon} from "@heroicons/react/outline";
+import {useRouter} from "next/router";
 
 const QueryTable = ({data}) => {
+
+  const Router = useRouter()
 
   function GlobalFilter({
                           globalFilter,
@@ -22,6 +25,11 @@ const QueryTable = ({data}) => {
     return (
       <div
         className="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
+        <button
+          onClick={() => Router.back()}
+          className="inline-flex items-center px-4 mr-2 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >Home
+        </button>
         <p className="mr-auto">Total Clicks: <span>{data.length}</span></p>
         <div className="w-full sm:max-w-xs">
           <label htmlFor="search" className="sr-only">
@@ -30,7 +38,8 @@ const QueryTable = ({data}) => {
           <div className="relative">
             <div
               className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-              <SearchIcon className="h-5 w-5 text-gray-400" aria-hidden="true"/>
+              <SearchIcon className="h-5 w-5 text-gray-400"
+                          aria-hidden="true"/>
             </div>
             <input
               value={value || ""}
@@ -49,7 +58,6 @@ const QueryTable = ({data}) => {
       </div>
     )
   }
-
 
 
   const tableData = useMemo(() => !data ? [] : data, [data]);
