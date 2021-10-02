@@ -1,6 +1,8 @@
 import {toast} from "react-toastify";
+import {useRouter} from "next/router";
 
 export default function ShortenLinkTableLocalStorage({links}) {
+  const Router = useRouter()
 
   return (
     <div className="flex flex-col justify-center">
@@ -26,8 +28,17 @@ export default function ShortenLinkTableLocalStorage({links}) {
                     >
                       Short Url
                     </th>
-                    <th scope="col" className="relative px-6 py-3">
-                      <span className="sr-only">Edit</span>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Copy Link
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Analytics
                     </th>
                   </tr>
                   </thead>
@@ -57,6 +68,16 @@ export default function ShortenLinkTableLocalStorage({links}) {
                         <a href="#"
                            className="text-indigo-600 hover:text-indigo-900">
                           COPY
+                        </a>
+                      </td>
+                      <td
+                        onClick={() => {
+                          Router.push(`${link.short_url}/query`)
+                        }}
+                        className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <a href={`${link.short_url}/query`}
+                           className="text-indigo-600 hover:text-indigo-900">
+                          Link
                         </a>
                       </td>
                     </tr>

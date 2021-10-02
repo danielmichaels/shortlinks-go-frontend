@@ -1,4 +1,4 @@
-import {axiosShortLink} from "../lib/axiosHandler";
+import {axiosShortLink} from "../../lib/axiosHandler";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {toast} from "react-toastify";
@@ -18,7 +18,7 @@ const RetrieveShortLink = () => {
       toast.success(`${resp.result} found. Redirecting...`)
       window.location.assign(resp.result)
     } catch (error) {
-      toast.error('domain does not exist. redirecting...')
+      toast.error('domain does not exist. Redirecting...')
       await Router.push("/404")
     }
   }
