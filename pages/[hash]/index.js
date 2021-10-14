@@ -15,17 +15,23 @@ const RetrieveShortLink = () => {
   const getLink = async () => {
     try {
       const resp = await axiosShortLink(hash)
-      toast.success(`${resp.result} found. Redirecting...`)
-      window.location.assign(resp.result)
+      const link = resp.link.original_url
+      toast.success(`${resp.link.original_url} found. Redirecting...`)
+      window.location.replace(`//${link}`)
+      // replace needs // in front to redirect correctly
+      // more details: https://stackoverflow.com/a/40368867/9163110
     } catch (error) {
       toast.error('domain does not exist. Redirecting...')
       await Router.push("/404")
     }
   }
+
+
   return (
     <div className="">
-    </div>
+      redirecting!
+     </div>
   )
 }
-
 export default RetrieveShortLink
+

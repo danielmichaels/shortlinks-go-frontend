@@ -5,7 +5,7 @@ const prod = {
 };
 const dev = {
   url: {
-    API_URL: `http://127.0.0.1:1987/api`,
+    API_URL: `http://127.0.0.1:1987/v1`,
   },
 };
 // eslint-disable-next-line no-undef

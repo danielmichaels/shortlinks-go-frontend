@@ -8,8 +8,8 @@ import ShortenLinkTableLocalStorage from "./ShortenLinkTableLocalStorage";
 const appendLocalStorageHashes = (resp) => {
   const LSObject = {
     short_url: resp.short_url,
-    hash: resp.data.hash,
-    long_url: resp.data.original_url
+    hash: resp.link.hash,
+    long_url: resp.link.original_url
   }
   const allLS = getValue("hashes", '') || [];
   allLS.push(LSObject)
