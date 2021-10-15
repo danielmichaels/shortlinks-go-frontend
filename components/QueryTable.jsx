@@ -9,8 +9,10 @@ import {
 import {SearchIcon} from "@heroicons/react/outline";
 import {useRouter} from "next/router";
 
-const QueryTable = ({data}) => {
+const QueryTable = ({linkData}) => {
 
+  const data = linkData.analytics
+  const metadata = linkData.metadata
   const Router = useRouter()
 
   function GlobalFilter({
@@ -26,11 +28,11 @@ const QueryTable = ({data}) => {
       <div
         className="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
         <button
-          onClick={() => Router.back()}
+          onClick={() => Router.replace("/")}
           className="inline-flex items-center px-4 mr-2 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >Home
         </button>
-        <p className="mr-auto">Total Clicks: <span>{data.length}</span></p>
+        <p className="mr-auto">Total Clicks: <span>{metadata.total_records}</span></p>
         <div className="w-full sm:max-w-xs">
           <label htmlFor="search" className="sr-only">
             Search
@@ -182,7 +184,8 @@ const QueryTable = ({data}) => {
         </div>
       </div>
 
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {/*<pre>{JSON.stringify(metadata, null, 2)}</pre>*/}
+      {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
     </>
   )
 }
