@@ -10,7 +10,6 @@ function App({Component, pageProps}) {
       <SWRConfig
         value={{
           shouldRetryOnError: true,
-          errorRetryCount: 1,
         }}>
         <HeadAndSeo/>
         <ToastContainer/>
