@@ -17,6 +17,8 @@ const moduleExports = {
     SENTRY_ORG: process.env.SENTRY_ORG,
     SENTRY_PROJECT: process.env.SENTRY_PROJECT,
     SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
+    PROD_URL: process.env.PROD_URL,
+    SITE_URL: process.env.SITE_URL
   }
 };
 
