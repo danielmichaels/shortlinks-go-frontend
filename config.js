@@ -1,6 +1,7 @@
+const PROD_URL = process.env.PROD_URL
 const prod = {
   url: {
-    API_URL: `https://s.danielms.site/`,
+    API_URL: PROD_URL,
   },
 };
 const dev = {
