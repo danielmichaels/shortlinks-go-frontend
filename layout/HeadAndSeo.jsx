@@ -1,20 +1,20 @@
 import {NextSeo} from "next-seo";
 import Head from 'next/head'
 
+const domain = process.env.DOMAIN_NAME
 export default function HeadAndSeo({page_title}) {
   const title = page_title ? `Shorty | ${page_title}` : "Shorty"
   return (
     <>
       <Head>
         <link rel="icon" href="/assets/icons/favicon.png"/>
-        {/*<title>Check Redirects | URL HTTP Status Code, Redirects, Short Links and more.</title>*/}
       </Head>
       <NextSeo
         title={title}
         description=""
-        canonical="https://s.danielms.site/"
+        canonical=domain
         openGraph={{
-          url: 'https://s.danielms.site/',
+          url: domain,
           title: '',
           description: "",
           images: [
@@ -25,11 +25,11 @@ export default function HeadAndSeo({page_title}) {
               alt: ""
             }
           ],
-          site_name: "s.danielms.site"
+          site_name: domain,
         }}
         twitter={{
             handle: '@dansult',
-            site: 's.danielms.site',
+            site: domain,
             cardType: 'summary_large_image',
           }}
       />
