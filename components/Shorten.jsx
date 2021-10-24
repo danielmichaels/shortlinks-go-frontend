@@ -1,10 +1,15 @@
-import {useCallback, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {toast} from "react-toastify";
 import {createShortLink} from "../lib/axiosHandler";
 import {getValue, setValue} from "../lib/localStorage";
 import ShortenLinkTableLocalStorage from "./ShortenLinkTableLocalStorage";
+import {useForm} from "react-hook-form";
 
-
+/**
+ * This function adds shortened links to local storage.
+ *
+ * @param resp response from server with link data
+ */
 const appendLocalStorageHashes = (resp) => {
   const LSObject = {
     short_url: resp.short_url,
@@ -18,27 +23,34 @@ const appendLocalStorageHashes = (resp) => {
 }
 
 export default function Shorten() {
-  const [links, setLinks] = useState( []);
+  const [links, setLinks] = useState([]);
 
-  useEffect(()=> {
+  // form
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: {errors}
+  } = useForm();
+
+  useEffect(() => {
     setLinks(getValue("hashes"))
   }, [])
 
-  const handleSubmit = useCallback((event) => {
-    // todo: validate that only a valid URL is accepted
-    event.preventDefault()
-    const link = event.target.link.value
-    createLink(link)
-  }, [])
+  const submitHandler = (data) => {
+    createLink(data)
+  }
 
-  const createLink = async (link) => {
+  const createLink = async (data) => {
     try {
-      const resp = await createShortLink({link: link})
-      toast.success(`${link} shortened successfully`)
+      const resp = await createShortLink(data)
+      toast.success(`${data.link} shortened successfully`)
       appendLocalStorageHashes(resp)
       setLinks(getValue("hashes")) // this updates the table
     } catch (error) {
-      console.log(error)
+      setError("link", {
+        type: "server", message: "An error occurred during form submission"
+      })
     }
   }
 
@@ -49,18 +61,21 @@ export default function Shorten() {
       <div className="relative py-3 w-11/12 max-w-xl sm:mx-auto">
         <div
           className="relative bg-gray-50 p-8 bg-white shadow-sm sm:rounded-xl">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6" onSubmit={handleSubmit(submitHandler)}>
             <div>
               <div className="mt-1">
                 <input
                   id="link"
                   name="link"
-                  type="text" // need to validate url only
+                  type="text"
                   placeholder="Shorten link"
                   autoComplete="link"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  {...register("link", {required: true})}
                 />
+                {errors.link &&
+                <div className="mt-5 text-center text-red-500">An error occurred during form submission</div>}
               </div>
             </div>
             <div className="pt-0">
@@ -76,14 +91,14 @@ export default function Shorten() {
           </form>
         </div>
       </div>
-       <section>
-         <h2 className="text-2xl font-bold">
-           Previous{' '}
-           <span className="text-blue-600">
+      <section>
+        <h2 className="text-2xl font-bold">
+          Previous{' '}
+          <span className="text-blue-600">
             Shorty Links
           </span>
-         </h2>
-        <ShortenLinkTableLocalStorage links={links} />
+        </h2>
+        <ShortenLinkTableLocalStorage links={links}/>
       </section>
     </div>
   )
