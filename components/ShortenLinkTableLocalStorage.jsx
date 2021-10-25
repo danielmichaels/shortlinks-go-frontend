@@ -144,7 +144,7 @@ export default function ShortenLinkTableLocalStorage({links}) {
                     <td
                       className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href={`/demoLink/analytics`}
-                         onClick={() => toast.dark("This is just a demo. Create a your own links to view analytics",
+                         onClick={() => toast.warn("This is just a demo. Create a your own links to view analytics",
                            {position: toast.POSITION.BOTTOM_CENTER})}
                          className="text-indigo-600 hover:text-indigo-900">
                         <Link href="#">
