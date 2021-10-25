@@ -1,12 +1,11 @@
 module.exports = {
-  siteUrls: process.env.SITE_URL || "https://s.danielms.site",
+  siteUrls: process.env.DOMAIN_NAME || 'https://tars.run',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
-        // disallow: ['/api', '/settings', '/dashboard']
       }
     ],
   }

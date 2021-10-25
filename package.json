@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev --port 1988",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
