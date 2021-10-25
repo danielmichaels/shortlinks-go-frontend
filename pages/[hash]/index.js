@@ -1,6 +1,7 @@
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {toast} from "react-toastify";
+import HeadAndSeo from "../../layout/HeadAndSeo";
 import {config} from "../../config";
 
 const RetrieveShortLink = () => {
@@ -26,6 +27,7 @@ const RetrieveShortLink = () => {
 
   return (
     <div className="">
+      <HeadAndSeo page_title={`Redirecting`} />
       redirecting!
      </div>
   )

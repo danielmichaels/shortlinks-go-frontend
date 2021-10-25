@@ -2,6 +2,7 @@ import {getLinkAnalytics} from "../../lib/axiosHandler";
 import {useRouter} from "next/router";
 import QueryTable from "../../components/QueryTable";
 import LoadingComponent from "../../components/LoadingComponent";
+import HeadAndSeo from "../../layout/HeadAndSeo";
 
 const Analytics = () => {
   const Router = useRouter()
@@ -28,6 +29,7 @@ const Analytics = () => {
 
   return (
     <div>
+      <HeadAndSeo page_title={`Analytics`} />
       <div
         className="py-6 flex flex-col justify-center sm:py-12">
         <div className="relative py-3 min-w-full max-w-xl sm:mx-auto">

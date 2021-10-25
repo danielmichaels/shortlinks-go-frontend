@@ -1,6 +1,9 @@
+import HeadAndSeo from "../layout/HeadAndSeo";
+
 export default function Error404() {
   return (
     <div className="bg-white">
+      <HeadAndSeo page_title={`Not Found`} />
       <div
         className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2
