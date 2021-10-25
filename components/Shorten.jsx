@@ -92,10 +92,10 @@ export default function Shorten() {
         </div>
       </div>
       <section>
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-2xl font-bold pb-5">
           Previous{' '}
-          <span className="text-blue-600">
-            Shorty Links
+          <span className="text-yellow-400">
+            Links
           </span>
         </h2>
         <ShortenLinkTableLocalStorage links={links}/>
