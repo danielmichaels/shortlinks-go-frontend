@@ -57,8 +57,8 @@ export default function Shorten() {
 
   return (
     <div
-      className="py-6 flex flex-col justify-center sm:py-12">
-      <div className="relative py-3 w-11/12 max-w-xl sm:mx-auto">
+      className="py-2 flex flex-col justify-center sm:py-12">
+      <div className="relative py-3 sm:w-11/12 max-w-xl sm:mx-auto">
         <div
           className="relative bg-gray-50 p-8 bg-white shadow-sm sm:rounded-xl">
           <form className="space-y-6" onSubmit={handleSubmit(submitHandler)}>
@@ -82,7 +82,7 @@ export default function Shorten() {
               <div className="flex justify-center items-center">
                 <button
                   type="submit"
-                  className=" justify-center py-2 px-5 w-full lg:w-1/3 md:w-3/4 xl:w-1/2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className=" justify-center py-2 px-5 w-full lg:w-1/3 md:w-3/4 xl:w-1/2 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-yellow-400 hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
                 >
                   Shorten
                 </button>

@@ -77,10 +77,10 @@ const QueryTable = ({linkData}) => {
         Header: "User Agent",
         accessor: "user_agent",
       },
-      {
-        Header: "Referrer",
-        accessor: "location",
-      },
+      // {
+      //   Header: "Referrer",
+      //   accessor: "location",
+      // },
       {
         Header: "Last Accessed",
         accessor: "date_accessed",
@@ -121,7 +121,7 @@ const QueryTable = ({linkData}) => {
           />
         </div>
 
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="-my-2 overflow-x-auto lg:-mx-8 md:px-5">
           <div
             className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div
@@ -183,9 +183,6 @@ const QueryTable = ({linkData}) => {
           </div>
         </div>
       </div>
-
-      {/*<pre>{JSON.stringify(metadata, null, 2)}</pre>*/}
-      {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
     </>
   )
 }
