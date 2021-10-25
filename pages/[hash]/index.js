@@ -1,7 +1,7 @@
-import {axiosShortLink} from "../../lib/axiosHandler";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {toast} from "react-toastify";
+import {config} from "../../config";
 
 const RetrieveShortLink = () => {
   const Router = useRouter()
@@ -14,15 +14,7 @@ const RetrieveShortLink = () => {
   }, [Router.isReady, Router.query])
   const getLink = async () => {
     try {
-      const resp = await axiosShortLink(hash)
-      let link = resp.link.original_url
-      toast.success(`${resp.link.original_url} found. Redirecting...`)
-
-      // If the URL has no scheme prefix (e.g., http:// or https://), assume
-      // that it's a plaintext http URL.
-      if (!/^[a-z0-9]+:\/\//.test(link)) {
-        link = "http://" + link
-      }
+      let link = `${config.url.API_URL}/links/${hash}`
 
       window.location.replace(link)
     } catch (error) {
