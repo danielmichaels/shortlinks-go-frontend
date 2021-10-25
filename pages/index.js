@@ -1,14 +1,11 @@
-import Head from 'next/head'
 import Shorten from "../components/Shorten";
 import Footer from "../components/Footer";
+import HeadAndSeo from "../layout/HeadAndSeo";
 
 export default function Home() {
   return (
     <div className="flex flex-col h-screen">
-      <Head>
-        <title>Shorty Links</title>
-        <link rel="icon" href="/favicon.ico"/>
-      </Head>
+      <HeadAndSeo page_title={`Home`} />
       <main
         className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <h1 className="text-6xl font-bold">
